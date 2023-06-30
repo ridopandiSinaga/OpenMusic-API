@@ -43,7 +43,6 @@ class SongHandler {
       },
     });
 
-    response.code(200);
     return response;
   }
 
@@ -53,13 +52,12 @@ class SongHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Get song by id berhasil',
+      message: 'Get song id berhasil',
       data: {
         song,
       },
     });
 
-    response.code(200);
     return response;
   }
 
@@ -76,23 +74,22 @@ class SongHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Edit song berhasil',
+      message: 'Song berhasil diperbaharui',
     });
 
-    response.code(200);
     return response;
   }
 
   async deleteSongByIdHander(request, h) {
     const { id } = request.params;
+
     await this._service.deleteSongById(id);
 
     const response = h.response({
       status: 'success',
-      message: 'song berhasil dihapus',
+      message: 'Song berhasil dihapus',
     });
 
-    response.code(200);
     return response;
   }
 }

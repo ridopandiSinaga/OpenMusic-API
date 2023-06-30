@@ -14,14 +14,14 @@ class SongsService {
   }) {
     const id = `song-${nanoid(16)}`;
     const createAt = new Date().toISOString();
-    const updateAt = createAt;
 
     const query = {
       text: 'INSERT INTO songs VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id',
-      values: [id, title, year, performer, genre, duration, albumId, createAt, updateAt],
+      values: [id, title, year, performer, genre, duration, albumId, createAt, createAt],
     };
 
     const result = await this._pool.query(query);
+
     if (!result.rows[0].id) {
       throw new InvariantError('Song gagal ditambahkan');
     }
@@ -39,6 +39,7 @@ class SongsService {
       // eslint-disable-next-line no-param-reassign
       performer = '';
     }
+
     const query = {
       text: 'SELECT id, title, performer FROM songs WHERE lower(title) LIKE $1 AND lower(performer) LIKE $2',
       values: [`%${title.toLowerCase()}%`, `%${performer.toLowerCase()}%`],
@@ -56,6 +57,7 @@ class SongsService {
     };
 
     const result = await this._pool.query(query);
+
     if (!result.rowCount) {
       throw new NotFoundError('Song Id tidak ditemukan');
     }
@@ -72,6 +74,7 @@ class SongsService {
     };
 
     const result = await this._pool.query(query);
+
     if (!result.rowCount) {
       throw new NotFoundError('Gagal memperbaharui Song, Id tidak ditemukan');
     }
@@ -84,6 +87,7 @@ class SongsService {
     };
 
     const result = await this._pool.query(query);
+
     if (!result.rowCount) {
       throw new NotFoundError('Song Gagal dihapus, Id tidak ditemukan');
     }

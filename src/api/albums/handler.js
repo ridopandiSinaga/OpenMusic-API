@@ -20,6 +20,7 @@ class AlbumsHandler {
         albumId,
       },
     });
+
     response.code(201);
     return response;
   }
@@ -35,7 +36,7 @@ class AlbumsHandler {
         album,
       },
     });
-    response.code(200);
+
     return response;
   }
 
@@ -48,21 +49,22 @@ class AlbumsHandler {
 
     const response = h.response({
       status: 'success',
-      message: 'Edit album berhasil',
+      message: 'Album berhasil diperbaharui',
     });
-    response.code(200);
+
     return response;
   }
 
   async deleteAlbumByIdHandler(request, h) {
     const { id } = request.params;
+
     await this._service.deleteAlbumById(id);
 
     const response = h.response({
       status: 'success',
       message: 'Album berhasil dihapus',
     });
-    response.code(200);
+
     return response;
   }
 }
