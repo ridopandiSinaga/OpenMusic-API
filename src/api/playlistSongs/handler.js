@@ -38,7 +38,6 @@ class PlaylistSongsHandler {
       status: 'success',
       message: 'Playlist song berhasil ditambahkan',
     });
-
     response.code(201);
     return response;
   }

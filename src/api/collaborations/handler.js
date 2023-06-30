@@ -26,7 +26,6 @@ class CollaborationsHandler {
         collaborationId,
       },
     });
-
     response.code(201);
     return response;
   }

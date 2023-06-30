@@ -21,7 +21,6 @@ class PlaylistHandler {
         playlistId,
       },
     });
-
     response.code(201);
     return response;
   }

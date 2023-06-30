@@ -19,7 +19,7 @@ class PlaylistSongsService {
     const result = await this._pool.query(query);
 
     if (!result.rowCount) {
-      throw new InvariantError('Playlist song gagal ditambahkan');
+      throw new InvariantError('Playlist sog gagal ditambahkan');
     }
   }
 
